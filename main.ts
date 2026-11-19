@@ -38,14 +38,17 @@ const DAY_MINUTES = 1440;
 // Tuning constants, fixed in advance (never fitted to the practice answers,
 // which are not in the kit).
 const WALK_SIGMA = 0.5; // logit units per sqrt(day), the random-walk term
-const SPREAD_FLOOR = 0.3; // minimum logit spread, even on a 90-minute horizon
+const SPREAD_FLOOR = 0.45; // minimum logit spread, even on a 90-minute horizon
+// (a single Exophase refresh can move a rate by ~0.5 logit units or more:
+// the launch-night refresh grew players tracked 638 -> 3,868, so a band
+// narrower than this is caught out by the first refresh it has not seen)
 const SPREAD_CAP = 2.0; // maximum logit spread
 const MAX_MEDIAN_MOVE = 2.5; // logit units the median may move from the last rate
 const SLOPE_CLAMP = 2.0; // per unit of log-time
 const FIT_WINDOW_HOURS = 48; // only snapshots this recent feed the trend fit
 const RECENCY_HALF_LIFE_HOURS = 24;
 const MAX_REFRESHES_COUNTED = 24; // cap on refreshes feeding the spread
-const DEFAULT_JUMP = 0.35; // typical refresh jump when history shows none
+const DEFAULT_JUMP = 0.4; // typical refresh jump when history shows none
 const DEFAULT_REFRESH_HOURS = 4; // assumed refresh cadence when none seen
 
 interface TrophyDef {
